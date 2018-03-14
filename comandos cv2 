@@ -1,0 +1,38 @@
+import numpy as np   
+import cv2-----usar a biblioteca opencv
+from scipy import signal
+
+x=cv2.imread("/home/mateus/Área de Trabalho/220px-Hamilton-poster.jpg")---comando para ler uma imagem
+print(x.shape)------- mostrar as dimenções da iamgem
+
+cv2.imshow('teste', x)---- mostrar a imagem 
+cv2.waitKey(5000)----------tempo que a imagem vai ficar aberta
+
+k = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])------criando o kernel
+
+cLenna = cv2.filter2D(x, -1, k)------comando de convolução
+
+cv2.imshow('Lenna', x)--------mostrar lena
+cv2.imshow('Convolved Lenna', cLenna)----------mostrar lena convolucionada
+cv2.waitKey(0)--------tempo das imagens abertas
+#### abrrir webcam 
+
+captura = cv2.VideoCapture (0)-----comando para abrir a webcam
+
+while (1):
+   ret, frame = captura.read ()
+
+   '''(b, g, r) = frame[200, 200]
+   frame[198:202, 198:202] = (0, 0, 255)
+   frame[10:90, 10:90] = (b, g, r)'''----------para aparecer um pixel 
+
+   cv2.imshow ("Video", frame)
+
+   k = cv2.waitKey (30) & 0xff
+   if k == 27:
+       break
+
+captura.release ()
+cv2.destroyAllWindows ()
+
+
