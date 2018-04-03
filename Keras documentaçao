@@ -1,0 +1,19 @@
+Camadas de processamento de imagem(CNN) 
+-utilizadas no classificador
+IMPORTAÇÃO DE BIBLIOTECAS
+from keras.models import Sequential------------
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense---------- Importando camadas da CNN
+
+1ª Convolução(operação entre a matriz filtro e matriz imagem que nos resultara em uma matriz com uma sobreposição de detalhes específicos)
+
+Conv2D----keras.layers.Conv2D(filters, kernel_size, strides=(1, 1)---------argumentos:[Número de filtros de saída na convolução(32,...)],[tamanho do filtro((..,(3, 3))],tamanho da imagem(64, 64, 3)
+ou chamamos com o operador .add (classifier.add)
+
+Sempre depois de uma convolução é nedessario aplicarmos uma camada de ---ativação--- que tem como função tirar os valores negativos da operação de convolução
+
+activation = 'relu' --------- utilizamos a camada 'relu', e a declaramos depois dos agumentos da minha camada de conv, como se fosse um argumnto tbm.
+
+exemplo:classifier.add(Conv2D(32, (3, 3), input_shape = (64, 64, 3), activation = 'relu'))
+
+
+
