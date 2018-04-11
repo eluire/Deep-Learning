@@ -3,10 +3,10 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from keras.optimizers import SGD, Adadelta
 from keras.metrics import categorical_accuracy
 
-# Definição do modelo
+# DefiniÃ§Ã£o do modelo
 classifier = Sequential()
 
-# Passo 1 - Convolução
+# Passo 1 - ConvoluÃ§Ã£o
 # "same" results in padding the input such that the output has the same length as the original input
 classifier.add(Conv2D(32, (3, 3), input_shape = (64, 64, 3), padding='same', activation = 'elu'))
 classifier.add(Conv2D(32, (3, 3), activation='elu'))
@@ -17,13 +17,13 @@ classifier.add(MaxPooling2D(pool_size = (2, 2)))
 # Passo 3 - Dropout
 classifier.add(Dropout(0.25))
 
-# Segunda camada de convolução 
+# Segunda camada de convoluÃ§Ã£o 
 classifier.add(Conv2D(64, (3, 3),  padding='same', activation = 'elu'))
 classifier.add(Conv2D(64, (3, 3), activation='elu'))
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
 classifier.add(Dropout(0.25))
 
-# Terceira camada de convolução
+# Terceira camada de convoluÃ§Ã£o
 classifier.add(Conv2D(64, (3, 3), padding='same', activation='elu'))
 classifier.add(Conv2D(64, (3, 3), activation='elu'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
